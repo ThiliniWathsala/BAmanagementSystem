@@ -1,0 +1,146 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%;z-index: 1;"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<br><br><br>
+<body>
+    <div class="tab-content" style="width: 82%; margin-left: 18%;z-index: 0;">
+        <div id="interface" class="container tab-pane active">
+            <div class="col-sm-10">
+    
+    
+                <div class="col offset-1">
+                    <br>
+                    <h1 class="text-md-left">Requirement Form</h1>
+                    <h3 class="text-md-left">External Interface Requirements</h3>
+                </div>
+                <br><br>
+                <form class="form-group offset-2" autocomplete="off" novalidate #createProject1="ngForm" (ngSubmit)="Submit()">
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>User Interfaces</legend>
+                            <div class="row">
+    
+                                <div class="col">
+                                    <p class="text-left">Display Interface: </p>
+                                    <div class="form-group shadow-textarea">
+                                        <textarea [disabled]="admincheck || status" class="form-control z-depth-1" [class.is-invalid]="pinputs.invalid && pinputs.touched" rows="8" name="display" [(ngModel)]="displaydetails.display" placeholder="Describe the logical characteristics of each interface between the software product and the users. This may include sample screen images, any GUI standards or product family style guides that are to be followed, screen layout constraints, standard buttons and functions (e.g., help) that will appear on every screen, keyboard shortcuts, error message display standards, and so on. "
+                                            #pinputs="ngModel" (keyup.enter)="onEnterDisplay(displaydetails.display)" (focus)="onFocusDisplay(displaydetails.display)" (keyup)="checkForMarks(displaydetails.display)"></textarea>
+                                    </div>
+                                    <span class="help-block " *ngIf="pinputs.invalid && pinputs.touched">
+                                    <p class="text-left" style="color:red;">This field is required.</p></span>
+                                </div>
+    
+    
+                                <!-- <div class="col">
+                                    <div>
+                                        <button class="btn btn-primary">?</button>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row">
+    
+                                <label class="col-sm-3 control-label">
+                                            Attachment:
+                                        </label>
+                                <div class="col-sm-9">
+                                    <span class="btn btn-default btn-file">
+                                            <input type="file" id="customFile" (change)="selectFile($event)">
+                                            <button class="btn btn-primary" [disabled]="!selectedFiles || admincheck || status" (click)="upload()">Save File</button>
+                                            <button class="btn btn-primary" style="margin-left: 10px" (click)="downloadMyFile()" *ngIf="available">View File</button>
+                                            </span>
+                                </div>
+                            </div>
+    
+    
+                        </fieldset>
+                    </div>
+                    <br>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Hardware Interfaces</legend>
+                            <div class="row">
+    
+                                <div class="col">
+                                    <p class="text-left">Specifications:</p>
+                                    <div class="form-group shadow-textarea">
+                                        <textarea (keyup.enter)="onEnterSpecifications(displaydetails.specifications)" (focus)="onFocusSpecifications(displaydetails.specifications)" (keyup)="checkForMarks(displaydetails.specifications)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="8" name="specifications" [(ngModel)]="displaydetails.specifications" #goals="ngModel" placeholder="Describe the logical and physical characteristics of each interface between the software product and the hardware components of the system. This may include the supported device types, the nature of the data and control interactions between the software and the hardware, and communication protocols to be used."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Software Interfaces</legend>
+                            <div class="form-group shadow-textarea">
+                                <p class="text-left">Software Connections:</p>
+    
+                                <textarea [disabled]="admincheck || status" class="form-control z-depth-1" rows="12" placeholder="Describe the connections between this product and other specific software components (name and version), including databases, operating systems, tools, libraries, and integrated commercial components. Identify the data items or messages coming into the system and going out and describe the purpose of each. Describe the services needed and the nature of communications."
+                                    name="connections" [(ngModel)]="displaydetails.connections" #usecase="ngModel" (keyup.enter)="onEnterConnections(displaydetails.connections)" (focus)="onFocusConnections(displaydetails.connections)" (keyup)="checkForMarks(displaydetails.connections)"></textarea>
+                            </div>
+                            <br>
+                        </fieldset>
+                    </div>
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Communication Interfaces</legend>
+    
+                            <div class="col">
+                                <p class="text-left">Communication Specifications and Network Protocols: </p>
+                   
+                                <div class="form-group shadow-textarea">
+                                    <textarea (keyup.enter)="onEnterNetwork(displaydetails.network)" (focus)="onFocusNetwork(displaydetails.network)" (keyup)="checkForMarks(displaydetails.network)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="8" name="network" [(ngModel)]="displaydetails.network" #goals="ngModel" placeholder="Describe the requirements associated with any communications functions required by this product, including e-mail, web browser, network server communications protocols, electronic forms, and so on. Define any pertinent message formatting."></textarea>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p class="text-left">Security & Data Encryption: </p>
+                                <div class="form-group shadow-textarea">
+                                    <textarea (keyup.enter)="onEnterEncryption(displaydetails.encryption)" (focus)="onFocusEncryption(displaydetails.encryption)" (keyup)="checkForMarks(displaydetails.encryption)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="8" name="encryption" [(ngModel)]="displaydetails.encryption" #poutputs="ngModel" placeholder="Specify any communication security or encryption issues, data transfer rates, and synchronization mechanisms."></textarea>
+                                </div>
+                            </div>
+    
+                            <br>
+                        </fieldset>
+                    </div>
+
+                    <div class="col">
+                        <fieldset>
+                            <legend>Comments</legend>
+    
+                            <div class="col">
+                                <p class="text-left">SBA Comments</p>
+                   
+                                <div class="form-group shadow-textarea">
+                                    <textarea [disabled]="admincheck || !sba" class="form-control z-depth-1" rows="8" name="sbacomment" [(ngModel)]="displaydetails.sbacomment" #goals="ngModel" placeholder="Mention SBA Comments (if any)"></textarea>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p class="text-left">PM Comments</p>
+                                <div class="form-group shadow-textarea">
+                                    <textarea [disabled]="admincheck || !pm" class="form-control z-depth-1" rows="8" name="pmcomment" [(ngModel)]="displaydetails.pmcomment"  placeholder="Mention PM Comments (if any)"></textarea>
+                                </div>
+                            </div>
+    
+                            <br>
+                        </fieldset>
+                    </div>
+    
+    
+                    <div class="row">
+                            <div class="col-md-2"><button class="btn btn-primary" routerLink="../SRSOptions" style="width: 150px;">Back to Form List</button></div>
+                        <div class="col-md-8"> <button (click)="save()" class="btn btn-primary" [disabled]="!createProject1.valid || admincheck" style="width: 150px; margin-left: 280px">Save Progress</button></div>
+                        <div class="col-md-2">
+                            <!-- <button routerLink="/display" type="button" class="btn btn-primary"(click)="onProjectListClick()"" [disabled]="userform.invalid">Add Project</button> -->
+    
+                            <button class="btn btn-primary" (click)="submit()" style="width: 150px; margin-left: -55px" *ngIf="!status" [disabled]>Submit</button>
+                        </div>
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,19 @@
+export class EmpType {
+    employeeid:string;
+    fname:string;
+    lname:string;
+    password:string;
+    type:string;
+    email:string;
+    username:string;
+    contact1:string;
+    contact2:string;
+    addressno:string;
+    street:string;
+    city:string;
+    status:string;
+    about:string;
+    image:string;
+    passstatus:string;
+    gradestatus:string;
+}

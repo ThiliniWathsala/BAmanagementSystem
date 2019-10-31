@@ -1,0 +1,32 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Notifications</h3>
+    <br>
+</section>
+<br><br><br><br>
+
+<table class="table table-striped" style="width: 82%; margin-left: 18%;">
+
+    <thead>
+        <tr style="position: fixed; background-color: white; margin-top: 10px; width: 82%">
+            <th scope="col" style="text-align: center; width: 220px">Date</th>
+            <th scope="col" style="text-align: center; width: 220px">Time</th>
+            <th scope="col" style="text-align: left; width: 650px">Content</th>
+        </tr>
+        <br><br>
+    </thead>
+    <tbody>
+        <tr *ngFor="let notifications of notificationnew">
+            <th scope="col" style="text-align: center; width: 20%; color: navy">{{notifications.date}}</th>
+            <th scope="col" style="text-align: center; width: 20%; color: navy">{{notifications.time}}</th>
+            <th scope="col" style="text-align: left; width: 60%"><a (click)="check(notifications)" style="color: navy" routerLink="">{{notifications.content}}</a></th>
+        </tr>
+        <tr *ngFor="let notifications of notificationother">
+            <th scope="col" style="text-align: center; width: 20%; color: black">{{notifications.date}}</th>
+            <th scope="col" style="text-align: center; width: 20%; color: black">{{notifications.time}}</th>
+            <th scope="col" style="text-align: left; width: 60%"><a (click)="check(notifications)" style="color: black" routerLink="">{{notifications.content}}</a></th>
+        </tr>
+    </tbody>
+</table>

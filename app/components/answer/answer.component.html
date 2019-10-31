@@ -1,0 +1,36 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Submit Answer</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<div class="mt-4 col-8 offset-2">
+  <div class="card" style="margin-left: 13%; margin-top: 100px; width: 100%">
+      <!-- <div class="card-header">Change Admin Password</div> -->
+      <div class="card-body">
+          <form #loginForm=ngForm>
+          <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-3 col-form-label">Question</label>
+              <div class="col-sm-9">
+                  <input type="text" class="form-control" value="{{currentquestion.content}}" disabled>
+              </div>
+          </div>
+          
+          <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-3 col-form-label">Answer</label>
+              <div class="col-sm-9">
+                  <input type="text" class="form-control" autocomplete="off" placeholder="Type Your Answer..." name="content" [(ngModel)]="newanswer.content" required [disabled]="admincheck">
+              </div>
+          </div>
+
+  <button class="btn btn-primary float-right" (click)="onSubmit()" [disabled]="!loginForm.valid || admincheck">Submit</button>
+</form>
+</div>
+</div>
+</div>
+
+
+  

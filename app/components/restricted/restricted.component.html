@@ -1,0 +1,17 @@
+
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Alert</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<div style="width: 75%; margin-left: 22%; margin-top:150px; background-color: #ffdddd; border-left: 6px solid #f44336;padding: 20px">
+<h2>This is a restricted page. Permission Required</h2>
+<br>
+<h2>Contact the administrator for more details</h2>
+
+<button routerLink="../Home" [disabled]="admincheck" class="btn btn-primary" style="margin-top: 20px; margin-left: 800px; width: 180px">Back to Home Page</button>
+</div>

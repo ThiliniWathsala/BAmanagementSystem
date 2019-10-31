@@ -1,0 +1,19 @@
+export class Overall {
+    id:string;
+    SRSid:string;
+    datemodified:string;
+    employeeid:string;
+    type:string;
+    description:string;
+    diagram1:string;
+    diagram2:string;
+    usercase:string;
+    software:string;
+    hardware:string;
+    constraints:string;
+    documents:string;
+    assumptions:string;
+    SBAcomment:string;
+    PMcomment:string;
+    specification:string;
+}

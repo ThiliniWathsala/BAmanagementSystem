@@ -1,0 +1,33 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Acknowledge BA Leave</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<table class="table table-striped" style="width: 82%; margin-left: 18%; margin-top: 10px">
+
+    <thead>
+        <tr style="position: fixed; background-color: white; width: 82%;">
+            <th scope="col" style="text-align: center; width: 15%">Employee ID</th>
+            <th scope="col" style="text-align: center; width: 20%">Name</th>
+            <th scope="col" style="text-align: center; width: 15%">Employee Type</th>
+            <th scope="col" style="text-align: center; width: 15%">Date</th>
+            <th scope="col" style="text-align: center; width: 25%">Reason</th>
+            <th scope="col" style="text-align: center; width: 10%">Acknowledge</th>
+        </tr>
+        <br><br>
+    </thead>
+    <tbody>
+        <tr *ngFor="let empcal of leavelist">
+            <th scope="col" style="text-align: center; width: 15%">{{empcal.employeeid}}</th>
+            <th scope="col" style="text-align: center; width: 20%">{{empcal.name}}</th>
+            <th scope="col" style="text-align: center; width: 15%">{{empcal.type}}</th>
+            <th scope="col" style="text-align: center; width: 260px">{{empcal.date}}</th>
+            <th scope="col" style="text-align: center; width: 400px">{{empcal.reason}}</th>
+            <th scope="col" style="text-align: center; width: 90px"><button class="btn btn-primary" value="{{empcal.leaveid}}" (click)="acknowledge(empcal.leaveid)" [disabled]="admincheck">Acknowledge</button></th>
+            </tr>
+    </tbody>
+</table>

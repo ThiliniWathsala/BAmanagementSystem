@@ -1,0 +1,30 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 45%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Answer List</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<section style="width: 82%; margin-left: 18%; background-color: teal; position:fixed;">
+<h4 style="margin-left: 10px">Question :</h4>
+<h3 style="margin-left: 10px">{{questionproject.content}}</h3>
+</section>
+<br><br><br>
+
+<table class="table table-hover table-striped" style="width: 82%; margin-left: 18%;">
+
+    <tbody>
+        <tr *ngFor="let answer of answerlist">
+            <th scope="col">
+                <h4>{{answer.content}}</h4>
+                <h5 style="margin-left: 30px; color: darkblue">Answer from: {{answer.employeeid}}</h5>
+                <h5 style="margin-left: 30px; color: darkblue">On: {{answer.date}} At: {{answer.time}}</h5>
+                <button class="btn btn-primary" (click)="reply(answer.answerid)">View Replies</button>
+            </th>
+            </tr>
+</table>
+
+<button (click)="newAnswer()" [disabled]="admincheck" class="btn btn-primary float-right">New Answer</button>
+<br><br>

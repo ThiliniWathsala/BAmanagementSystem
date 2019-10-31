@@ -1,0 +1,19 @@
+export class Grade {
+    projectid:string;
+    customergrade:string;
+    systemgrade1:string;
+    systemgrade2:string;
+    sbagrade1:string;
+    sbagrade2:string;
+    pmgrade:string;
+    qagrade:string;
+    devgrade:string;
+    devcount:string;
+    status:string;
+    dev1grade:string;
+    dev2grade:string;
+    dev3grade:string;
+    dev4grade:string;
+    dev5grade:string;
+    employeeid:string;
+}

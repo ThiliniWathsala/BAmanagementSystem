@@ -1,0 +1,31 @@
+
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<br><br><br>
+<body>
+   
+<div style="margin-left: 18%; bottom: 1" *ngFor="let message of greetings">
+    <div *ngIf="check(message)"></div>
+<div class="container" *ngIf="isDisabled">
+  <img src={{imageowner}} alt={{imageowner}} style="width:100%;">
+  <p>{{message.content}}</p>
+  <span class="time-right">{{message.date}} at {{message.time}}</span>
+</div>
+
+<div class="container darker" *ngIf="!isDisabled">
+  <img src={{image}} alt={{image}} class="right" style="width:100%;">
+  <p>{{message.content}}</p>
+  <span class="time-left">{{message.date}} at {{message.time}}</span>
+</div>
+  </div>
+  <br><br><br><br><br><br>
+<div #box></div>
+<form #loginForm=ngForm>
+<div style="position: fixed; bottom: 0; left: 0; width: 82%; height: 140px;background-color: #ddd; margin-left: 18%">
+  <br>
+  <textarea autocomplete="off" style="width: 85%; resize: none; height: 100px; margin-left: 50px" [disabled]="admincheck" placeholder="Type Your Message..." name="content" [(ngModel)]="newmessage.content" required></textarea>
+  <button class="btn btn-primary" style="margin-bottom: 100px; width: 80px; margin-left: 10px" (click)="sendName()" [disabled]="!loginForm.valid || admincheck">Send</button>
+</div>
+</form>
+</body>

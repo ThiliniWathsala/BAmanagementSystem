@@ -1,0 +1,141 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%;z-index: 1;"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<br><br><br>
+<body>
+   
+    <div class="tab-content" style="width: 82%; margin-left: 18%;z-index: 0;">
+
+        <div id="sys-features" class="container tab-pane active">
+            <div class="col-sm-10">
+    
+    
+                <div class="col offset-1">
+                    <br>
+                    <h1 class="text-md-left">Requirement Form</h1>
+                    <h3 class="text-md-left">System Features</h3>
+    
+                </div>
+                <br>
+                <div class="col offset-2">
+    
+                    <p class="text-md-left">This template illustrates organizing the functional requirements for the product by system features, the major services provided by the product. You may prefer to organize this section by use case, mode of operation, user class, object
+                        class, functional hierarchy, or combinations of these, whatever makes the most logical sense for your product</p>
+                    <hr>
+
+                    <table class="table table-bordered table-striped text-center">
+                            <tr>
+                              <th class="text-center">Priority</th>
+                              <th class="text-center">Description</th>
+                              <th class="text-center">Response Sequence</th>
+                              <th class="text-center">Requirement</th>
+                              <th class="text-center">Remove</th>
+                            </tr>
+                            <tr *ngFor="let feature of featureList; let id = index">
+                              <td>
+                                <span (keyup)="changeValue(id, 'priority', $event)" (blur)="updateList(id, 'priority', $event)" contenteditable="false">{{feature.priority}}</span>
+                              </td>
+                              <td>
+                                <span contenteditable="true" (keyup)="changeValue(id, 'description', $event)" (blur)="updateList(id, 'description', $event)">{{feature.description}}</span>
+                              </td>
+                              <td>
+                                <span contenteditable="true" (keyup)="changeValue(id, 'response', $event)" (blur)="updateList(id, 'response', $event)">{{feature.response}}</span>
+                              </td>
+                              <td>
+                                <span contenteditable="true" (keyup)="changeValue(id, 'requirement', $event)" (blur)="updateList(id, 'requirement', $event)">{{feature.requirement}}</span>
+                              </td>
+                              <td>
+                                <span class="table-remove">
+                                  <button type="button"  rounded="true" size="sm" class="btn btn-primary" (click)="remove(id)" [disabled]="admincheck || status">Remove</button>
+                                </span>
+                              </td>
+                            </tr>
+                          </table>
+
+                </div>
+                <form class="form-group offset-2" autocomplete="off" novalidate #createProject1="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="col">
+                        <fieldset>
+                            <legend>System Feature </legend>
+                            <div class="col">
+                                <p class="text-left">Priority</p>
+                                <select class="custom-select" name="priority" [(ngModel)]="featuredetails.priority" required [disabled]="admincheck || status">
+                                    <option value="Low">Low</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="High">High</option>
+                                </select>
+                                <br><br>
+                                <p class="text-left">Description</p>
+    
+                                <div class="form-group shadow-textarea">
+                                    <textarea [disabled]="admincheck || status" (keyup)="checkForMarks(featuredetails.description)" required class="form-control z-depth-1" [class.is-invalid]="pinputs.invalid && pinputs.touched" rows="8" name="description" [(ngModel)]="featuredetails.description" placeholder="Provide a short description of the feature and indicate whether it is of High, Medium, or Low priority. You could also include specific priority component ratings, such as benefit, penalty, cost, and risk"
+                                        #pinputs="ngModel"></textarea>
+                                </div>
+                            </div>
+                            <div class="col">
+    
+                                <p class="text-left">Stimulus/Response Sequences: </p>
+    
+                                <div class="form-group shadow-textarea">
+                                    <textarea (keyup)="checkForMarks(featuredetails.response)" [disabled]="admincheck || status" required class="form-control z-depth-1" [class.is-invalid]="pinputs.invalid && pinputs.touched" rows="8" name="response" [(ngModel)]="featuredetails.response" placeholder="List the sequences of user actions and system responses that stimulate the behavior defined for this feature. These will correspond to the dialog elements associated with use cases"
+                                        #pinputs="ngModel"></textarea>
+                                </div>
+                            </div>
+                            <div class="col">
+    
+                                <p class="text-left">Functional Requirement: </p>
+    
+                                <div class="form-group shadow-textarea">
+                                    <textarea [disabled]="admincheck || status" required class="form-control z-depth-1" [class.is-invalid]="pinputs.invalid && pinputs.touched" rows="8" name="requirement" [(ngModel)]="featuredetails.requirement" placeholder="Itemize the detailed functional requirements associated with this feature. These are the software capabilities that must be present in order for the user to carry out the services provided by the feature, or to execute the use case. Include how the product should respond to anticipated error conditions or invalid inputs."
+                                        #pinputs="ngModel" (keyup)="checkForMarks(featuredetails.requirement)"></textarea>
+                                </div>
+                            </div>
+    
+                        </fieldset>
+                    </div>
+                    <div class="row">
+                        <div class="col offset-8"><button type="button" (click)="add()" class="btn btn-primary btn-lg" [disabled]="!createProject1.valid || admincheck || status">Add a system feature</button></div>
+                    </div>
+                    <br>
+                    
+                </form>
+
+                <div class="col">
+                        <fieldset>
+                            <legend>Comments</legend>
+    
+                            <div class="col">
+                                <p class="text-left">SBA Comments</p>
+                   
+                                <div class="form-group shadow-textarea">
+                                    <textarea [disabled]="admincheck || !sba" class="form-control z-depth-1" rows="8" name="sbacomment" [(ngModel)]="features.sbacomment" #goals="ngModel" placeholder="Mention SBA Comments (if any)"></textarea>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p class="text-left">PM Comments</p>
+                                <div class="form-group shadow-textarea">
+                                    <textarea [disabled]="admincheck || !pm" class="form-control z-depth-1" rows="8" name="pmcomment" [(ngModel)]="features.pmcomment" #poutputs="ngModel" placeholder="Mention PM Comments (if any)"></textarea>
+                                </div>
+                            </div>
+    
+                            
+                        </fieldset>
+                    </div>
+                    <hr>
+                    <div class="row">
+                    <div class="col-md-2"><button class="btn btn-primary" routerLink="../SRSOptions" style="width: 150px; margin-left: 30px">Back to Form List</button></div>
+                    
+                        <div class="col-md-8"> <button (click)="save()" class="btn btn-primary" style="width: 150px; margin-left: 380px" [disabled]="admincheck">Save Progress</button></div>
+                        <div class="col-md-2">
+                            <!-- <button routerLink="/display" type="button" class="btn btn-primary"(click)="onProjectListClick()"" [disabled]="userform.invalid">Add Project</button> -->
+    
+                            <button style="width: 150px; margin-left: -55px" class="btn btn-primary" *ngIf="!status" [disabled]="admincheck" (click)="submit()">Submit</button>
+                            </div>
+                        
+                    </div>
+    <br>
+            </div>
+        </div>
+    </div>
+    
+</body>

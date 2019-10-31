@@ -1,0 +1,53 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 82%; margin-left: 18%">
+    <div style="text-align: center">
+    <div>
+        <a class="navbar-item" routerLink="../CreateProfile" *ngIf="admin"> Create User</a>
+        <a class="navbar-brand" routerLink="../CreateProfile" *ngIf="admin"> Manage User Account</a>
+        <a class="navbar-brand" routerLink="../CreateProfile" *ngIf="admin"> Change Admin Password</a>
+        <a class="navbar-brand" routerLink="../CreateProject" *ngIf="pm"> Create Project</a>
+        <a class="navbar-brand" routerLink="../Chat">Chat</a>
+        <a class="navbar-brand" routerLink="../LeaveSubmit" *ngIf="sba || jba">Leave Submit</a>
+        <a class="navbar-brand" routerLink="../LeaveApproval" *ngIf="pm">Leave Approve</a> 
+        <a class="navbar-brand" routerLink="../ProjectList" *ngIf="!admin">Project List</a>
+        <a class="navbar-brand" routerLink="../ProjectList" *ngIf="!admin">Grade Employee</a>
+    </div>
+</div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 82%; margin-left: 18%">
+    <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
+            <a class="navbar-brand" routerLink="../Home" style="font-size: larger;font-family: sans-serif; color: darkgoldenrod">
+                    <b>BA_Management_System</b>
+                </a>
+
+        <ul class="navbar-nav ml-auto flex-nowrap">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="../CreateProfile" *ngIf="admin" style="font-size: large"><b> Create User</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="../ResetBlockedAccount" *ngIf="admin" style="font-size: large"><b> Manage User Account</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="../AdminChangePassword" *ngIf="admin" style="font-size: large"><b>Change Admin Password</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="../CreateProject" *ngIf="pm" style="font-size: large"><b>Create Project</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="../Chat" style="font-size: large"><b>Chat</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="../LeaveSubmit" *ngIf="sba || jba" style="font-size: large"><b>Leave Submit</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="../LeaveApproval" *ngIf="pm" style="font-size: large"><b>Leave Approve</b></a> 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="../ProjectList" *ngIf="!admin" style="font-size: large"><b>Project List</b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="../GradeList" *ngIf="!admin && !jba" style="font-size: large"><b>Grade Employee</b></a>
+            </li>
+        </ul>
+    </div>
+</nav>

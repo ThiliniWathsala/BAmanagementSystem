@@ -1,0 +1,37 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Employee List</h3>
+    <br>
+</section>
+
+<br><br><br><br><br>
+
+<form style="padding-left: 1000px; position: fixed; background-color: white; height: 100px; width: 100%" (ngSubmit)="onSubmit()">
+  <input type="text" class="form-control"autocomplete="off"  name="fname" [(ngModel)]="model.fname" style="width: 250px; margin-top: 8px">
+  <button type="submit" class="btn btn-primary" style="margin-left: 250px; margin-top: -38px; position: fixed">Search</button>
+  </form>
+
+<table class="table table-striped" style="margin-top: 55px; width: 82%; margin-left: 18%;">
+
+    <thead>
+        <tr style="position: fixed; background-color: white; width: 82%">
+            <th scope="col" style="text-align: center; width: 10%">Employee ID</th>
+            <th scope="col" style="text-align: center; width: 10%">Name</th>
+            <th scope="col" style="text-align: center; width: 10%">Employee Type</th>
+            <th scope="col" style="text-align: center; width: 10%">Profile</th>
+            <th scope="col" style="text-align: center; width: 10%">Chat</th>
+        </tr>
+        <br><br>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emptype of employeelist">
+            <th scope="col" style="text-align: center; width: 20%">{{emptype.employeeid}}</th>
+            <th scope="col" style="text-align: center; width: 20%"><span>{{emptype.fname}} </span><span> {{emptype.lname}}</span></th>
+            <th scope="col" style="text-align: center; width: 20%">{{emptype.type}}</th>
+            <th scope="col" style="text-align: center; width: 20%"><button value="{{emptype.employeeid}}" (click)="viewProfile(emptype.employeeid)" class="btn btn-primary">View Profile</button></th>
+            <th scope="col" style="text-align: center; width: 20%"><button value="{{emptype.employeeid}}" (click)="chatNow(emptype.employeeid)" class="btn btn-primary">Chat Now</button></th>
+            </tr>
+    </tbody>
+</table>

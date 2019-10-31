@@ -1,0 +1,161 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%;z-index: 1;"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<br><br><br>
+<body>
+   
+    <div class="tab-content" style="width: 82%; margin-left: 18%;z-index: 0;">
+
+        <div id="introduction" class="container tab-pane active">
+            <div class="col-sm-10">
+    
+    
+                <div class="col offset-1">
+                    <br>
+                    <h1 class="text-md-left">Requirement Form</h1>
+                    <h3 class="text-md-left">Project Introduction</h3>
+                </div>
+                <br>
+                <form class="form-group offset-2" autocomplete="off" novalidate #createProject1="ngForm">
+    
+                    <!-- <div class="col">
+                        <hr>
+                        <h3 class="text-md-left">Project Introduction</h3>
+                    </div> -->
+    
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Purpose of the project</legend>
+                            <div class="row">
+    
+                                <div class="col">
+                                    <p class="text-left">Purpose: </p>
+                                    <div class="form-group shadow-textarea">
+                                        <textarea (keyup.enter)="onEnterPurpose(introductiondetails.purpose)" (focus)="onFocusPurpose(introductiondetails.purpose)" (keyup)="checkForMarks(introductiondetails.purpose)" class="form-control z-depth-1" [class.is-invalid]="pinputs.invalid && pinputs.touched" rows="3" name="purpose" [(ngModel)]="introductiondetails.purpose" [disabled]="admincheck || status" placeholder="Please specify the development purpose" #pinputs="ngModel"></textarea>
+                                    </div>
+                                    <span class="help-block " *ngIf="pinputs.invalid && pinputs.touched">
+                                    <p class="text-left" style="color:red;">This field is required.</p></span>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Document Conventions</legend>
+                            <div class="row">
+    
+                                <div class="col">
+                                    <p class="text-left">Specifications:</p>
+                                    <div class="form-group shadow-textarea">
+                                        <textarea (keyup.enter)="onEnterSpecifications(introductiondetails.specifications)" (focus)="onFocusSpecifications(introductiondetails.specifications)" (keyup)="checkForMarks(introductiondetails.specifications)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="8" name="specifications" [(ngModel)]="introductiondetails.specifications" #goals="ngModel" placeholder="Describe any standards or typographical conventions that were followed when writing this SRS."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Intended Audience and Reading Suggestions</legend>
+                            <div class="form-group shadow-textarea">
+                                <p class="text-left">Document Organization & Reading Suggestions:</p>
+    
+                                <textarea [disabled]="admincheck || status" class="form-control z-depth-1" rows="12" placeholder="Describe what the rest of this SRS contains and how it is organized. Suggest a sequence for reading the document, beginning with the overview sections and proceeding through the sections that are most pertinent to each reader type."
+                                (keyup.enter)="onEnterSuggestions(introductiondetails.suggestions)" (focus)="onFocusSuggestions(introductiondetails.suggestions)" (keyup)="checkForMarks(introductiondetails.suggestions)" name="suggestions" [(ngModel)]="introductiondetails.suggestions" #usecase="ngModel"></textarea>
+                            </div>
+                            <br>
+                            <div class="form-group shadow-textarea">
+                                <p class="text-left">Intended Audience:</p>
+    
+                                <textarea [disabled]="admincheck || status" class="form-control z-depth-1" rows="12" placeholder="Describe the different types of reader that the document is intended for, such as  users of the system, marketing staff, testers, and documentation writers." name="audience" [(ngModel)]="introductiondetails.audience"
+                                (keyup.enter)="onEnterAudience(introductiondetails.audience)" (focus)="onFocusAudience(introductiondetails.audience)" (keyup)="checkForMarks(introductiondetails.audience)" #usecase="ngModel"></textarea>
+                            </div>
+                        </fieldset>
+                    </div>
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Product Scope</legend>
+                            <div class="form-group shadow-textarea">
+                                <div class="row">
+                                    <p class="text-left">Purpose and Benefits:</p>
+                                    <!-- <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                                        Tooltip on top
+                                      </button> -->
+                                </div>
+    
+    
+    
+                                <textarea (keyup.enter)="onEnterBenefits(introductiondetails.benefits)" (focus)="onFocusBenefits(introductiondetails.benefits)" (keyup)="checkForMarks(introductiondetails.benefits)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="8" placeholder="Provide a short description of the software being specified and its purpose, including relevant benefits." name="benefits" [(ngModel)]="introductiondetails.benefits" #usecase="ngModel"></textarea>
+                            </div>
+                            <div class="row">
+    
+                                <div class="col">
+                                    <p class="text-left">Goals: </p>
+                                    <div class="form-group shadow-textarea">
+                                        <textarea (keyup.enter)="onEnterGoal(introductiondetails.goal)" (focus)="onFocusGoal(introductiondetails.goal)" (keyup)="checkForMarks(introductiondetails.goal)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="8" name="goal" [(ngModel)]="introductiondetails.goal" #goals="ngModel" placeholder="Expected project goals. Relate the software to corporate goals or business strategies."></textarea>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <p class="text-left">Objectives: </p>
+                                    <div class="form-group shadow-textarea">
+                                        <textarea (keyup.enter)="onEnterObjectives(introductiondetails.objectives)" (focus)="onFocusObjectives(introductiondetails.objectives)" (keyup)="checkForMarks(introductiondetails.objectives)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="8" name="objectives" [(ngModel)]="introductiondetails.objectives" #poutputs="ngModel" placeholder="Specify the project objectives. Relate the objectives to the software scope and the time frame."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>References</legend>
+                            <div class="form-group shadow-textarea">
+                                <p class="text-left">Ref:</p>
+                                <textarea [disabled]="admincheck || status" class="form-control z-depth-1" rows="10" placeholder="List any other documents or Web addresses to which this SRS refers. These may include user interface style guides, contracts, standards, system requirements specifications, use case documents, or a vision and scope document. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location."
+                                (keyup.enter)="onEnterReference(introductiondetails.reference)" (focus)="onFocusReference(introductiondetails.reference)" (keyup)="checkForMarks(introductiondetails.reference)" name="reference" [(ngModel)]="introductiondetails.reference" #usecase="ngModel"></textarea>
+                            </div>
+                            <br>
+                        </fieldset>
+                    </div>
+    
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Comments</legend>
+    
+                            <div class="col">
+                                <p class="text-left">SBA Comments</p>
+                   
+                                <div class="form-group shadow-textarea">
+                                    <textarea [disabled]="admincheck || !sba" class="form-control z-depth-1" rows="8" name="sbacomment" [(ngModel)]="introductiondetails.sbacomment" #goals="ngModel" placeholder="Mention SBA Comments (if any)"></textarea>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p class="text-left">PM Comments</p>
+                                <div class="form-group shadow-textarea">
+                                    <textarea [disabled]="admincheck || !pm" class="form-control z-depth-1" rows="8" name="pmcomment" [(ngModel)]="introductiondetails.pmcomment" #poutputs="ngModel" placeholder="Mention PM Comments (if any)"></textarea>
+                                </div>
+                            </div>
+    
+                            <br>
+                        </fieldset>
+                    </div>
+    
+                    <div class="row">
+                            <div class="col-md-2"><button class="btn btn-primary" routerLink="../SRSOptions" style="width: 150px;">Back to Form List</button></div>
+                        <div class="col-md-8"> <button (click)="save()" class="btn btn-primary" [disabled]="!createProject1.valid || admincheck" style="width: 150px; margin-left: 280px">Save Progress</button></div>
+                        <div class="col-md-2">
+                            <!-- <button routerLink="/display" type="button" class="btn btn-primary"(click)="onProjectListClick()"" [disabled]="userform.invalid">Add Project</button> -->
+    
+                            <button class="btn btn-primary" (click)="submit()" style="width: 150px; margin-left: -55px" *ngIf="!status" [disabled]="admincheck">Submit</button>
+                        </div>
+                    </div>
+    
+    
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

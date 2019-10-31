@@ -1,0 +1,42 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Edit Customer Details</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<div class="mt-4 col-8 offset-2">
+    <div class="card" style="margin-left: 13%; margin-top: 100px; width: 100%;">
+        <!-- <div class="card-header">Edit Customer Details</div> -->
+        <div class="card-body">
+            <form #loginForm=ngForm (ngSubmit)="onSubmit()">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Customer Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="name" autocomplete="off" placeholder="Customer Name" name="name" [(ngModel)]="currentcustomer.name" required [disabled]="admincheck || other">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Customer Contact</label>
+                    <div class="col-sm-9">
+                        <input type="tel" class="form-control" id="contact1" autocomplete="off" placeholder="Contact" name="contact1" [(ngModel)]="currentcustomer.contact1" required [disabled]="admincheck || other">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Customer Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control"  id="email" autocomplete="off" placeholder="Email" name="email" [(ngModel)]="currentcustomer.email" required [disabled]="admincheck || other">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10 offset-2">
+                        <button type="submit" class="btn btn-primary float-right" [disabled]="!loginForm.valid || admincheck || other">Save Changes</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

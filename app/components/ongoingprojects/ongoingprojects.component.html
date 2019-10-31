@@ -1,0 +1,28 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Projects Under Attention</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+<table class="table table-striped" style="width: 82%; margin-left: 18%;">
+
+    <thead>
+        <tr style="position: fixed; background-color: white">
+            <th scope="col" style="text-align: center; width: 10%">Project ID</th>
+            <th scope="col" style="text-align: center; width: 10%">Project Name</th>
+            <th scope="col" style="text-align: center; width: 10%">Description</th>
+            <th scope="col" style="text-align: center; width: 10%">View SRS</th>
+        </tr>
+        <br><br>
+    </thead>
+    <tbody>
+        <tr *ngFor="let project of projectlist">
+            <th scope="col" style="text-align: center; width: 25%">{{project.projectid}}</th>
+            <th scope="col" style="text-align: center; width: 25%">{{project.name}}</th>
+            <th scope="col" style="text-align: center; width: 25%">{{project.description}}</th>
+            <th scope="col" style="text-align: center; width: 25%"><button value="{{project.projectid}}" (click)="srs(project.projectid)" [disabled]="admincheck" class="btn btn-primary">View SRS</button></th>
+            </tr>
+    </tbody>
+</table>

@@ -1,0 +1,199 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Profile View</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<table class="table" style="width: 82%; margin-left: 18%;">
+        <thead>
+            <tr style="position: fixed; background-color: white;">
+                <!-- <th scope="col" style="text-align: center; width: 5%">Rank</th>
+                <th scope="col" style="text-align: center; width: 15%">Employee Number</th>
+                <th scope="col" style="text-align: center; width: 22%">Employee Name</th>
+                <th scope="col" style="text-align: center; width: 13%">No. of Projects Completed</th>
+                <th scope="col" style="text-align: center; width: 15%">Lead BA Grade</th>
+                <th scope="col" style="text-align: center; width: 10%">System Grade</th>
+                <th scope="col" style="text-align: center; width: 10%">Customer Grade</th>
+                <th scope="col" style="text-align: center; width: 10%">Overall Grade</th> -->
+            </tr>
+            <br>
+        </thead>
+        <tbody>
+            <tr>
+                    <div class="form-group" style="margin-left: 20px;">
+                    <div style="text-align:center">
+                            <img src={{image}} style="border-radius: 80%; height: 250px;">
+                            <br>
+                            <button (click)="change($event)" *ngIf="!changeImage" class="btn btn-primary" [disabled]="admincheck">Change Image</button>
+                        </div>
+                        <input style="margin-left: 280px" autocomplete="off" id="file-input" name="image" (change)="selectFile($event)" type="file" placeholder="Please copy the file path of yur image" [(ngModel)]="userPro.image" *ngIf="changeImage">
+                        <button *ngIf="changeImage" [disabled]="!selectedFiles" (click)="upload()" class="btn btn-primary">Save Image</button>
+                        <button *ngIf="changeImage" (click)="remain()" class="btn btn-primary" style="margin-left: 5px">Keep Existing</button>
+                        </div>
+                    </tr>
+            <tr>
+                    <div class="form-group" style="margin-left: 20px;">
+                    <h5 style="display:inline-block">Personal Details</h5>
+                    <button style="float:right" class="btn btn-primary"
+                        (click)="PersonDetailsEditButtonClick($event)"
+                        *ngIf="isPersonDetailsEditableDisabled" [disabled]="admincheck">Edit</button>
+                        </div>
+            </tr>
+            <tr>
+                    <div class="form-group" style="margin-left: 20px;">
+                            <label for="fname">First Name</label>
+                            <input autocomplete="off" class="form-control" type="text" name="fname" [(ngModel)]="userPro.fname" [disabled]="isPersonDetailsEditableDisabled || admincheck"
+                                 value="{{userPro.fname}}"> 
+                      </div>
+                </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;">
+                        <label for="lname">Last Name</label>
+                        <input autocomplete="off" [(ngModel)]="userPro.lname" [disabled]="isPersonDetailsEditableDisabled || admincheck"
+                            class="form-control" type="text" name="lname" value="{{userPro.lname}}">
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;">
+                        <label for="username">User Name</label>
+                        <input autocomplete="off" [(ngModel)]="userPro.username" [disabled]="isPersonDetailsEditableDisabled || admincheck"
+                            class="form-control" type="text" name="username" value="{{userPro.lname}}">
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;">
+                        <label for="Position">Position</label>
+                        <input [(ngModel)]="userPro.type" name="type" disabled=""
+                            class="form-control" type="text" value="{{userPro.type}}">
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;">
+                        <label for="About-me">About me</label>
+                        <textarea autocomplete="off" [(ngModel)]="userPro.about" name="about" [disabled]="isPersonDetailsEditableDisabled || admincheck"
+                            class="form-control" cols="30" rows="5" type="text" value="{{userPro.about}}">
+
+                  </textarea>
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;">
+                        <button *ngIf="!isPersonDetailsEditableDisabled" class="btn btn-primary" [disabled]="admincheck"
+                        (click)="remain()">Keep Existing</button>
+                        <br>
+                        <button style="float: right; margin-top: -40px" *ngIf="!isPersonDetailsEditableDisabled" class="btn btn-primary" [disabled]="admincheck"
+                        (click)="changePersonalDetails($event)">Save changes</button>
+                        <br>
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;">
+                        <h5 style="display:inline-block">Contact Details</h5>
+
+                        <button style="float:right" class="btn btn-primary"
+                            (click)="ContactDetailsEditableDisabled($event)"
+                            *ngIf="isContactDetailsEditableDisabled" [disabled]="admincheck">Edit</button>
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;">
+                    <label for="Contact">Contact No</label>
+                        <input autocomplete="off" [disabled]="isContactDetailsEditableDisabled || admincheck" class="form-control" type="text"
+                            value="{{userPro.contact1}}" name="contact1" [(ngModel)]="userPro.contact1">
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;">
+                        <label for="Contact">Address</label>
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 100px;">
+                        <label for="number"> No:</label>
+                        <input autocomplete="off" [disabled]="isContactDetailsEditableDisabled || admincheck" class="form-control" type="text"
+                            value="{{userPro.addressno}}" name="addressno" [(ngModel)]="userPro.addressno">
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 100px;">
+                        <label for="Street">Street:</label>
+                        <input autocomplete="off" [disabled]="isContactDetailsEditableDisabled || admincheck" class="form-control" type="text"
+                            value="{{userPro.street}}" name="street" [(ngModel)]="userPro.street">
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 100px;">
+                        <label for="City">City:</label>
+                        <input autocomplete="off" [disabled]="isContactDetailsEditableDisabled || admincheck" class="form-control" type="text"
+                            value="{{userPro.city}}" name="city" [(ngModel)]="userPro.city">
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;">
+                        <label for="email">Email</label>
+                        <input autocomplete="off" [disabled]="isContactDetailsEditableDisabled || admincheck" class="form-control" type="text"
+                            value="{{userPro.email}}" name="email" [(ngModel)]="userPro.email">
+                            </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;">
+                        <button [disabled]="admincheck" *ngIf="!isContactDetailsEditableDisabled" class="btn btn-primary" (click)="remain()">Keep Existing</button>
+                        <button style="float:right;" [disabled]="admincheck" *ngIf="!isContactDetailsEditableDisabled" class="btn btn-primary" (click)="changeContactDetails($event)">Save changes</button>
+                        <br>
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;">
+                        <h5 style="display:inline-block">Password</h5>
+                        <button style="float:right" class="btn btn-primary" *ngIf="isloginDetailsEditableDisabled"
+                            (click)="loginDetailsEdit($event)" [disabled]="admincheck || admin">Change Password</button>
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;" *ngIf="!isloginDetailsEditableDisabled">
+                        <label for="newPassword">New Password</label>
+                        <input [(ngModel)]="modelPro.newPassword" name="newPassword" class="form-control" type="password" [disabled]="admincheck">
+                        <password-strength-meter [password]="modelPro.newPassword" [enableFeedback]="true" (strengthChange)="onPasswordStrengthChanged($event)"></password-strength-meter>
+    <small id="passwordHelpBlock" class="form-text text-muted">
+      Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters,
+      or emoji.
+    </small>
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;">
+                        <p style="color: red; font-size: smaller" *ngIf="!errormsgEnable2 ; else clearmsg2">
+                                {{ errormsg2 }}</p>
+                            <ng-template #clearmsg2>
+                                <p></p>
+                            </ng-template>
+                  </div>
+            </tr>
+            <tr>
+                <div class="form-group" style="margin-left: 20px;" *ngIf="!isloginDetailsEditableDisabled">
+                        <label for="confirmPassword">Confirm password</label>
+                        <input [(ngModel)]="modelPro.rePassword" name="rePassword" class="form-control" type="password" [disabled]="admincheck">
+                  </div>
+            </tr>
+            <tr>
+                    <div class="form-group" style="margin-left: 20px;">
+                            <p style="color: red; font-size: smaller " *ngIf="!errormsgEnable3; else clearmsg3 ">
+                                    {{ errormsg3 }}</p>
+                                <ng-template #clearmsg3>
+                                    <p></p>
+                                </ng-template>
+                      </div>
+                </tr>
+                <tr>
+                        <div class="form-group" style="margin-left: 20px;">
+                                <button *ngIf="!isloginDetailsEditableDisabled"
+                                class="btn btn-primary " [disabled]="admincheck" (click)="remain()">Keep Existing</button>
+                                <button style="float:right;" *ngIf="!isloginDetailsEditableDisabled"
+                                class="btn btn-primary " (click)="checkPassword()" [disabled]="admincheck">Save Password</button>
+                          </div>
+                    </tr>
+        </tbody>
+    </table>

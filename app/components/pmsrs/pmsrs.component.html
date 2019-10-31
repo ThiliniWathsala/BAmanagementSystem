@@ -1,0 +1,155 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Project SRS</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<table class="table" style="width: 82%; margin-left: 18%;">
+    <thead>
+        <tr style="position: fixed; background-color: white;">
+            <!-- <th scope="col" style="text-align: center; width: 5%">Rank</th>
+            <th scope="col" style="text-align: center; width: 15%">Employee Number</th>
+            <th scope="col" style="text-align: center; width: 22%">Employee Name</th>
+            <th scope="col" style="text-align: center; width: 13%">No. of Projects Completed</th>
+            <th scope="col" style="text-align: center; width: 15%">Lead BA Grade</th>
+            <th scope="col" style="text-align: center; width: 10%">System Grade</th>
+            <th scope="col" style="text-align: center; width: 10%">Customer Grade</th>
+            <th scope="col" style="text-align: center; width: 10%">Overall Grade</th> -->
+        </tr>
+        <br>
+    </thead>
+    <tbody>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">Project ID</label>
+                <input class="form-control" type="text" name="projectid" [(ngModel)]="currentproject.projectid" disabled value="{{currentproject.projectid}}">
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">Project Name</label>
+                <input class="form-control" type="text" name="name" [(ngModel)]="currentproject.name" disabled value="{{currentproject.name}}">
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">Customer Name</label>
+                <input class="form-control" type="text" name="customerid" [(ngModel)]="currentproject.customerid" disabled value="{{currentproject.customerid}}">
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">Project Manager</label>
+                <input class="form-control" type="text" name="pm" [(ngModel)]="currentproject.pm" disabled value="{{currentproject.pm}}">
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">Objectives</label>
+                <textarea class="form-control" type="text" name="objective" [(ngModel)]="currentsrs1.objective" disabled
+                         value="{{currentsrs.objective}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">Users</label>
+                <textarea class="form-control" type="text" name="user" [(ngModel)]="currentsrs1.user" disabled
+                           value="{{currentsrs.user}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">Inputs</label>
+                <textarea class="form-control" type="text" name="input" [(ngModel)]="currentsrs1.input" disabled
+                           value="{{currentsrs.input}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">Outputs</label>
+                <textarea class="form-control" type="text" name="output" [(ngModel)]="currentsrs1.output" disabled
+                           value="{{currentsrs.output}}"></textarea>>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">User Stories</label>
+                <textarea class="form-control" type="text" name="userstory" [(ngModel)]="currentsrs1.userstory" disabled
+                           value="{{currentsrs.userstory}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">SBA Comments</label>
+                <textarea class="form-control" type="text" name="SBAcomment1" [(ngModel)]="currentsrs1.SBAcomment1" disabled
+                           value="{{currentsrs.SBAcomment1}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">PM Comments</label>
+                <textarea autocomplete="off" class="form-control" type="text" name="PMcomment1" [(ngModel)]="currentsrs1.PMcomment1" [disabled]="state || admincheck"
+                           value="{{currentsrs.PMcomment1}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">System Specification</label>
+                <textarea class="form-control" type="text" name="systemspecification" [(ngModel)]="currentsrs2.systemspecification" disabled
+                         value="{{currentsrs.systemspecification}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">Technical Requirements</label>
+                <textarea class="form-control" type="text" name="technicalrequirement" [(ngModel)]="currentsrs2.technicalrequirement" disabled
+                           value="{{currentsrs.technicalrequirement}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">Network Requirements</label>
+                <textarea class="form-control" type="text" name="networkrequirement" [(ngModel)]="currentsrs2.networkrequirement" disabled
+                           value="{{currentsrs.networkrequirement}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">Security Level Specification</label>
+                <textarea class="form-control" type="text" name="securitylevelspecification" [(ngModel)]="currentsrs2.securitylevelspecification" disabled
+                           value="{{currentsrs.securitylevelspecification}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">Additional Notes</label>
+                <textarea class="form-control" type="text" name="additionalnote" [(ngModel)]="currentsrs2.additionalnote" disabled
+                           value="{{currentsrs.additionalnote}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">SBA Comments</label>
+                <textarea class="form-control" type="text" name="SBAcomment2" [(ngModel)]="currentsrs2.SBAcomment2" disabled
+                           value="{{currentsrs.SBAcomment2}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" style="margin-left: 20px;">
+                <label for="fname">PM Comments</label>
+                <textarea autocomplete="off" class="form-control" type="text" name="PMcomment2" [(ngModel)]="currentsrs2.PMcomment2" [disabled]="state || admincheck"
+                           value="{{currentsrs.PMcomment2}}"></textarea>
+              </div>
+        </tr>
+        <tr>
+            <div class="form-group" >
+                <button class="btn btn-primary float-right" (click)="saveComments();" [disabled]="state || admincheck">Save Comments</button>
+                <button style="margin-left: 5px; margin-right: 5px" class="btn btn-primary float-right" (click)="acknowledge();" [disabled]="state || admincheck">Acknowledge</button> 
+                <button class="btn btn-primary float-right" (click)="mail();" [disabled]="admincheck">Email SRS Manually</button> 
+              </div>
+        </tr>
+    </tbody>
+</table>

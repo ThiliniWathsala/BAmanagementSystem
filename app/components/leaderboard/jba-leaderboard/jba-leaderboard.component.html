@@ -1,0 +1,38 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">JBA LeaderBoard</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<table class="table table-hover table-striped" style="width: 82%; margin-left: 18%;">
+    <thead>
+        <tr style="position: fixed; background-color: white">
+            <th scope="col" style="text-align: center; width: 5%">Rank</th>
+            <th scope="col" style="text-align: center; width: 15%">Employee Number</th>
+            <th scope="col" style="text-align: center; width: 22%">Employee Name</th>
+            <th scope="col" style="text-align: center; width: 13%">No. of Projects Completed</th>
+            <th scope="col" style="text-align: center; width: 15%">Lead BA Grade</th>
+            <th scope="col" style="text-align: center; width: 10%">System Grade</th>
+            <th scope="col" style="text-align: center; width: 10%">Customer Grade</th>
+            <th scope="col" style="text-align: center; width: 10%">Overall Grade</th>
+        </tr>
+        <br><br><br>
+    </thead>
+    <tbody>
+        <tr *ngFor="let jbarank of jbaleaderboard; let i = index">
+            <!-- <td>{{count()}}</td> -->
+            <td style="text-align: center; width: 5%">{{i+1}}</td>
+            <td style="text-align: center; width: 15%">{{jbarank.employeeid}}</td>
+            <td style="text-align: center; width: 22%">{{jbarank.name}}</td>
+            <td style="text-align: center; width: 13%">{{jbarank.projectcount}}</td>
+            <td style="text-align: center; width: 15%">{{jbarank.lbagrade}}</td>
+            <td style="text-align: center; width: 10%">{{jbarank.systemgrade}}</td>
+            <td style="text-align: center; width: 10%">{{jbarank.customergrade}}</td>
+            <td style="text-align: center; width: 10%">{{jbarank.overall}}</td>
+
+        </tr>
+    </tbody>
+</table>

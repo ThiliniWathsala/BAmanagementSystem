@@ -1,0 +1,73 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Submit Leave Note</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<div class="mt-4 col-8 offset-2">
+    <div class="card" style="margin-left: 13%; margin-top: 100px; width: 100%;">
+        <!-- <div class="card-header">Edit Customer Details</div> -->
+        <div class="card-body">
+                <form class="form-group" (ngSubmit)="onSubmit()" autocomplete="off" novalidate #leaveForm="ngForm">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Employee Name</label>
+                    <div class="col-sm-9">
+                            <input [disabled]="admincheck" type="text" class="form-control" [class.is-invalid]="fname.invalid && fname.touched" placeholder="First name" name="firstname" [(ngModel)]="model.fname" #fname="ngModel" disabled value="{{model.fname}}">
+                            <span class="help-block " *ngIf="fname.invalid && fname.touched ">
+                                    <p class="text-left" style="color:red;">This field is required.</p> </span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Duration</label>
+                            <div class="col-sm-4">
+                                    <input [disabled]="admincheck" type="date" bsDatepicker required class="form-control" [class.is-invalid]="leave.invalid && leave.touched" placeholder="Leave Date" name="startdate" [(ngModel)]="modelcalender.startdate" #leave="ngModel">
+                                </div>
+                                <div class="col-sm-4">
+                                    <div *ngIf="active.touched && active.valid">
+          
+                                        <input [disabled]="admincheck" type="date" class="form-control" placeholder="Return Date" name="enddate" [(ngModel)]="modelcalender.enddate" #return="ngModel">
+                                    </div>
+                                </div>
+                </div>
+                <div class="form-group row" style="margin-left: 200px">
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input [disabled]="admincheck" type="checkbox"> Full Day
+                        </div>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input [disabled]="admincheck" type="checkbox"> Half Day
+                        </div>
+                        <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                            <input [disabled]="admincheck" type="checkbox" name="isActive" [(ngModel)]="isActive" #active="ngModel"> More+
+                        </div>
+  
+                    </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Reason for Absense</label>
+                    <div class="col-sm-9">
+                            <input type="text" [disabled]="admincheck" autocomplete="off" class="form-control" [class.is-invalid]="fname.invalid && fname.touched" placeholder="Reason for Absence" name="reason" [(ngModel)]="modelcalender.reason" #reason="ngModel" required>
+                            <span class="help-block " *ngIf="fname.invalid && fname.touched ">
+                                                                    <p class="text-left" style="color:red;">This field is required.</p> </span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Project Manager</label>
+                    <div class="col-sm-9">
+                        <select id="pm" name="PMan" [(ngModel)]="modelcalender.pm" class="form-control" required #pm="ngModel" [disabled]="admincheck">                       
+                            <option *ngFor="let string of pmlist" value="{{string}}">
+                                    {{string}}
+                            </option>           
+                        </select>                                    
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10 offset-2">
+                            <button type="submit" class="btn btn-primary float-right" [disabled]="admincheck || !leaveForm.valid">Request Leave</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Projects to be Graded</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+<table class="table table-striped" style="width: 82%; margin-left: 18%;">
+
+    <thead>
+        <tr style="position: fixed; background-color: white">
+            <th scope="col" style="text-align: center; width: 10%">Project ID</th>
+            <th scope="col" style="text-align: center; width: 10%">Project Name</th>
+            <th scope="col" style="text-align: center; width: 10%">Description</th>
+            <th scope="col" style="text-align: center; width: 10%">Grade Project</th>
+        </tr>
+        <br><br>
+    </thead>
+    <tbody>
+        <tr *ngFor="let gradeproject of listtograde">
+            <th scope="col" style="text-align: center; width: 25%">{{gradeproject.projectid}}</th>
+            <th scope="col" style="text-align: center; width: 25%">{{gradeproject.name}}</th>
+            <th scope="col" style="text-align: center; width: 25%">{{gradeproject.description}}</th>
+            <th scope="col" style="text-align: center; width: 25%"><button value="{{gradeproject.projectid}}" (click)="grade(gradeproject.projectid)" [disabled]="admincheck" class="btn btn-primary">Grade Now</button></th>
+            </tr>
+    </tbody>
+</table>

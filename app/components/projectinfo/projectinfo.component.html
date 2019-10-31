@@ -1,0 +1,96 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%;z-index: 700;margin-top: -25px"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<div style="z-index: 700; position: fixed; margin-top: -25px">
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Project Information</h3>
+    <br>
+</section>
+<br><br><br><br>
+</div>
+
+<div style="z-index: 600; position: relative;">
+
+                        <div class="mt-4 col-8 offset-2" style="margin-top: 200px">
+                                <div class="card" style="margin-left: 13%; width: 100%;">
+                                    <!-- <div class="card-header">Edit Customer Details</div> -->
+                                    <div class="card-body" style="margin-top: 100px">
+                                        <form class="form-group" autocomplete="off" novalidate #createProject1="ngForm" (ngSubmit)="onSubmit()">
+                                                <div class="form-group row">
+                                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Project ID</label>
+                                                        <div class="col-sm-9">
+                                                                <input type="text" disabled class="form-control" name="projectid" [(ngModel)]="currentproject.projectid" >
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row">
+                                                        <label for="inputPassword3" class="col-sm-3 col-form-label">Project Name</label>
+                                                        <div class="col-sm-9">
+                                                                <input type="text" disabled class="form-control" name="name" [(ngModel)]="currentproject.name" >
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="form-group row">
+                                                            <label for="inputPassword3" class="col-sm-3 col-form-label">Start Date</label>
+                                                            <div class="col-sm-9">
+                                                                    <input type="text" disabled class="form-control" name="startdate" [(ngModel)]="currentproject.startdate" >
+                                                            </div>
+                                                        </div>
+                                    
+                                                        <div class="form-group row">
+                                                                <label for="inputPassword3" class="col-sm-3 col-form-label">Project Description</label>
+                                                                <div class="col-sm-9">
+                                                                        <textarea style="resize: none" disabled class="form-control z-depth-1"  name="description" [(ngModel)]="currentproject.description" disabled></textarea>
+                                                                </div>
+                                                            </div>
+                            
+                                                            <div class="form-group row">
+                                                                    <label for="inputPassword3" class="col-sm-3 col-form-label">Customer Name</label>
+                                                                    <div class="col-sm-9">
+                                                                            <input type="text" disabled class="form-control" name="customerid" [(ngModel)]="currentproject.customerid" >
+                                                                    </div>
+                                                                </div>
+                            
+                                                                <div class="form-group row">
+                                                                        <label for="inputPassword3" class="col-sm-3 col-form-label">Project Manager</label>
+                                                                        <div class="col-sm-9">
+                                                                                <input type="text" disabled class="form-control" name="pm" [(ngModel)]="currentproject.pm" >
+                                                                        </div>
+                                                                    </div>
+                            
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Allocated Senior BA</label>
+                                                <div class="col-sm-9">
+                                                        <input type="text" disabled class="form-control" name="lba" [(ngModel)]="currentproject.lba" >       
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <label for="inputPassword3" class="col-sm-3 col-form-label">Allocated Junior BA's</label>
+                                                <div class="col-sm-9">
+                                                        <input type="text" disabled class="form-control" name="jba1" [(ngModel)]="currentproject.jba1" >
+                            
+                                                        <input type="text" disabled class="form-control" name="jba2" [(ngModel)]="currentproject.jba2" >
+                            
+                                                </div>
+                                            </div>
+                            
+                                            <div class="form-group row">
+                                                    <label for="inputPassword3" class="col-sm-3 col-form-label">Allocated Developers</label>
+                                                    <div class="col-sm-9">
+                                                            <input type="text" disabled class="form-control" name="dev1" [(ngModel)]="currentproject.dev1" >
+                            
+                                                            <input type="text" disabled class="form-control" name="dev2" [(ngModel)]="currentproject.dev2" >
+                            
+                                                            <input type="text" disabled class="form-control" name="dev3" [(ngModel)]="currentproject.dev3" >
+                            
+                                                            <input type="text" disabled class="form-control" name="dev4" [(ngModel)]="currentproject.dev4" >
+                            
+                                                            <input type="text" disabled class="form-control" name="dev5" [(ngModel)]="currentproject.dev5" >
+                                                    </div>
+                                                </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+</div>

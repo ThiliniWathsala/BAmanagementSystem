@@ -1,0 +1,27 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Chat List</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<table class="table table-hover table-striped" style="width: 82%; margin-left: 18%;">
+
+    <thead>
+        <tr style="position: fixed; background-color: white; margin-top: 10px; ">
+            <th scope="col" style="text-align: center; width: 400px">Employee ID</th>
+            <th scope="col" style="text-align: center; width: 2400px">Name</th>
+            <th scope="col" style="text-align: center; width: 350px">Chat</th>
+        </tr>
+        <br><br>
+    </thead>
+    <tbody>
+        <tr *ngFor="let chatmessage of chattinglist">
+            <th scope="col" style="text-align: center; width: 400px;">{{chatmessage.empid}}</th>
+            <th scope="col" style="text-align: center; width: 2500px;">{{chatmessage.empname}}</th>
+            <th scope="col" style="text-align: center; width: 200px;"><button (click)="onSubmit(chatmessage)" class="btn btn-primary">Chat Now</button></th>
+            </tr>
+        </tbody>
+</table>

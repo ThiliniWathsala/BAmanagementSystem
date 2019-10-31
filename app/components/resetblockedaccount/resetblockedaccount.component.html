@@ -1,0 +1,40 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Manage Account</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<div class="mt-4 col-8 offset-2">
+  <div class="card" style="margin-left: 13%; margin-top: 100px; width: 100%">
+      <!-- <div class="card-header">Change Admin Password</div> -->
+      <div class="card-body">
+          <!-- <div class="col-12 user-img">
+                  <img src="img/face.png">
+              </div> -->
+          <form #loginForm=ngForm (ngSubmit)="inSubmit()">
+              <!-- <div class="alert alert-danger" [hidden]="!error">{{error}}</div> -->
+              <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">User Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" autocomplete="off" class="form-control" id="inputEmail3" placeholder="Email" name="email" [(ngModel)]="details.email" required>
+                    </div>
+                </div>
+              
+              <div class="form-group row">
+                  <div class="col-sm-10 offset-2">
+                        <button (click)="blockNow(details.email);" class="btn btn-primary" [disabled]="!loginForm.valid">Block Account</button>
+                        <button (click)="change(details.email);" class="btn btn-primary float-right" style="margin-left: 10px" [disabled]="!loginForm.valid">Change Account Information</button>
+                        <button type="submit" class="btn btn-primary float-right" [disabled]="!loginForm.valid">Reset Account</button>
+
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+
+

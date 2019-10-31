@@ -1,0 +1,158 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%;z-index: 1;"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<br><br><br>
+<body>
+   
+    <div class="tab-content" style="width: 82%; margin-left: 18%;z-index: 0;">
+
+        <div id="Non-func" class="container tab-pane active">
+            <div class="col-sm-10">
+    
+    
+                <div class="col offset-1">
+                    <br>
+                    <h1 class="text-md-left">SRS of {{ProjectName}}</h1>
+                    <h3 class="text-md-left">Non-functional Requirements</h3>
+                </div>
+                <br>
+                <form class="form-group offset-2" autocomplete="off" novalidate #createProject1="ngForm" (ngSubmit)="Submit()">
+    
+    
+    
+                    <hr>
+    
+    
+    
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Performance Requirements</legend>
+                            <div class="row">
+    
+                                <div class="col">
+    
+                                    <div class="form-group shadow-textarea">
+                                        <textarea [disabled]="admincheck || status" class="form-control z-depth-1" [class.is-invalid]="pinputs.invalid && pinputs.touched" rows="6" name="performance" [(ngModel)]="nonfunctionaldetails.performance" placeholder="If there are performance requirements for the product under various circumstances, state them here and explain their rationale, to help the developers understand the intent and make suitable design choices. Specify the timing relationships for real time systems. Make such requirements as specific as possible. You may need to state performance requirements for individual functional requirements or features"
+                                        (keyup.enter)="onEnterPerformance(nonfunctionaldetails.performance)" (focus)="onFocusPerformance(nonfunctionaldetails.performance)" (keyup)="checkForMarks(nonfunctionaldetails.performance)" #pinputs="ngModel"></textarea>
+                                    </div>
+                                    <span class="help-block " *ngIf="pinputs.invalid && pinputs.touched">
+                                    <p class="text-left" style="color:red;">This field is required.</p></span>
+                                </div>
+    
+    
+                            </div>
+    
+                        </fieldset>
+                    </div>
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Safety Requirements</legend>
+                            <div class="row">
+    
+                                <div class="col">
+                                    <p class="text-left">Possible damages or any safety requirements:</p>
+                                    <div class="form-group shadow-textarea">
+                                        <textarea (keyup.enter)="onEnterDamages(nonfunctionaldetails.damages)" (focus)="onFocusDamages(nonfunctionaldetails.damages)" (keyup)="checkForMarks(nonfunctionaldetails.damages)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="8" name="damages" [(ngModel)]="nonfunctionaldetails.damages" #goals="ngModel" placeholder="Specify those requirements that are concerned with possible loss, damage, or harm that could result from the use of the product"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+    
+                                <div class="col">
+                                    <p class="text-left">Safety actions:</p>
+                                    <div class="form-group shadow-textarea">
+                                        <textarea (keyup.enter)="onEnterSafety(nonfunctionaldetails.safety)" (focus)="onFocusSafety(nonfunctionaldetails.safety)" (keyup)="checkForMarks(nonfunctionaldetails.safety)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="8" name="safety" [(ngModel)]="nonfunctionaldetails.safety" #goals="ngModel" placeholder="Define any safeguards or actions that must be taken, as well as actions that must be prevented"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Security Requirements</legend>
+                            <div class="form-group shadow-textarea">
+                                <p class="text-left">Privacy concerned with data used:</p>
+    
+                                <textarea [disabled]="admincheck || status" class="form-control z-depth-1" rows="12" placeholder="Specify any requirements regarding security or privacy issues surrounding use of the product or protection of the data used or created by the product. Define any user identity authentication requirements"
+                                (keyup.enter)="onEnterSecurity(nonfunctionaldetails.security)" (focus)="onFocusSecurity(nonfunctionaldetails.security)" (keyup)="checkForMarks(nonfunctionaldetails.security)" name="security" [(ngModel)]="nonfunctionaldetails.security" #usecase="ngModel"></textarea>
+                            </div>
+                            
+
+                        </fieldset>
+                    </div>
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Software Quality Attributes</legend>
+                            <div class="form-group shadow-textarea">
+                            <p>Specify any additional quality characteristics for the product that will be important to either the customers or the developers.</p>
+                            
+                                
+                                    <textarea (keyup.enter)="onEnterAttribute(nonfunctionaldetails.attribute)" (focus)="onFocusAttribute(nonfunctionaldetails.attribute)" (keyup)="checkForMarks(nonfunctionaldetails.attribute)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="8" name="attribute" [(ngModel)]="nonfunctionaldetails.attribute" #goals="ngModel" placeholder="Mention Software Quality attributes mainly concerned.. Ex: Maintainability, Reliability, Flexibility, Portability, etc.."></textarea>
+                                </div>
+                            
+                            
+                            <div class="row">
+    
+                                <div class="col">
+                                    <p class="text-left">Description: </p>
+                                    <div class="form-group shadow-textarea">
+                                        <textarea (keyup.enter)="onEnterDescription(nonfunctionaldetails.description)" (focus)="onFocusDescription(nonfunctionaldetails.description)" (keyup)="checkForMarks(nonfunctionaldetails.description)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="8" name="description" [(ngModel)]="nonfunctionaldetails.description" #goals="ngModel" placeholder="Write these to be specific, quantitative, and verifiable when possible. At the least, clarify the relative preferences for various attributes, such as ease of use over ease of learning."></textarea>
+                                    </div>
+                                </div>
+    
+                            </div>
+                            <br>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Business Rules</legend>
+                            <div class="form-group shadow-textarea">
+                                <p class="text-left">Ref:</p>
+                                <textarea [disabled]="admincheck || status" class="form-control z-depth-1" rows="12" placeholder="List any operating principles about the product, such as which individuals or roles can perform which functions under specific circumstances. These are not functional requirements in themselves, but they may imply certain functional requirements to enforce the rules."
+                                (keyup.enter)="onEnterReference(nonfunctionaldetails.reference)" (focus)="onFocusReference(nonfunctionaldetails.reference)" (keyup)="checkForMarks(nonfunctionaldetails.reference)" name="reference" [(ngModel)]="nonfunctionaldetails.reference" #usecase="ngModel"></textarea>
+                            </div>
+                        </fieldset>
+                    </div>
+    
+                    <div class="col">
+                            <fieldset>
+                                <legend>Comments</legend>
+        
+                                <div class="col">
+                                    <p class="text-left">SBA Comments</p>
+                       
+                                    <div class="form-group shadow-textarea">
+                                        <textarea [disabled]="admincheck || !sba" class="form-control z-depth-1" rows="8" name="sbacomment" [(ngModel)]="nonfunctionaldetails.sbacomment" #goals="ngModel" placeholder="Mention SBA Comments (if any)"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <p class="text-left">PM Comments</p>
+                                    <div class="form-group shadow-textarea">
+                                        <textarea [disabled]="admincheck || !pm" class="form-control z-depth-1" rows="8" name="pmcomment" [(ngModel)]="nonfunctionaldetails.pmcomment" #poutputs="ngModel" placeholder="Mention PM Comments (if any)"></textarea>
+                                    </div>
+                                </div>
+        
+                                <br>
+                            </fieldset>
+                        </div>
+
+                    <div class="row">
+                         <div class="col-md-2"><button class="btn btn-primary" routerLink="../SRSOptions" style="width: 150px;">Back to Form List</button></div>
+                        <div class="col-md-8"> <button (click)="save()" class="btn btn-primary" style="width: 150px; margin-left: 280px" [disabled]="!createProject1.valid || admincheck">Save Progress</button></div>
+                        <div class="col-md-2">
+                            <!-- <button routerLink="/display" type="button" class="btn btn-primary"(click)="onProjectListClick()"" [disabled]="userform.invalid">Add Project</button> -->
+    
+                            <button  class="btn btn-primary" (click)="submit()" style="width: 150px; margin-left: -55px" *ngIf="!status" [disabled]="admincheck">Submit</button>
+                        </div>
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

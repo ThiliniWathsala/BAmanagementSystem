@@ -1,0 +1,74 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Create New Project</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<div class="mt-4 col-8 offset-2">
+    <div class="card" style="margin-left: 13%; margin-top: 10px; width: 100%;">
+        <!-- <div class="card-header">Edit Customer Details</div> -->
+        <div class="card-body">
+            <form #createProject1="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Customer Name</label>
+                    <div class="col-sm-9">
+                            <input autocomplete="off" [disabled]="admincheck" type="text" required class="form-control"  placeholder="Customer Name" name="firstname" [(ngModel)]="project.cname" >
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Customer Email</label>
+                    <div class="col-sm-9">
+                            <input autocomplete="off" [disabled]="admincheck" type="text" required email class="form-control" placeholder="E-mail" name="email" [(ngModel)]="project.email" >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label">Customer Contact No.</label>
+                        <div class="col-sm-9">
+                                <input type="tel" autocomplete="off" [disabled]="admincheck" required class="form-control" pattern="^\d{10}$" placeholder="Contact Number"  name="contact" [(ngModel)]="project.contact">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-3 col-form-label">Project Name</label>
+                            <div class="col-sm-9">
+                                    <input type="text" autocomplete="off" required [disabled]="admincheck" class="form-control"  placeholder="Name of the Project" name="project" [(ngModel)]="project.pname" >
+                            </div>
+                        </div>
+
+                    <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-3 col-form-label">Project Description</label>
+                            <div class="col-sm-9">
+                                    <textarea autocomplete="off" style="resize: none" [disabled]="admincheck" class="form-control z-depth-1" rows="3" placeholder="Description about the Project" name="description" [(ngModel)]="project.description"  required></textarea>
+                            </div>
+                        </div>
+                        
+                            <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-3 col-form-label">Expected Time Duration</label>
+                                    
+                                            <div class="col-sm-4">
+                                                    <label for="inputPassword3">Start Date</label>
+                                                    <input type="date" min="{{min1date}}" [disabled]="admincheck" (change)="setMin2Date()" id="inputMDEx" class="form-control" name="startdate" [(ngModel)]="project.startdate" required="" > 
+                                
+                                                </div>
+                                                <div class="col-sm-4">
+                                                        <label for="inputPassword3">End Date</label>
+                                                        <input type="date"  min="{{min2date}}" [disabled]="admincheck" id="inputMDEx" class="form-control" name="enddate" [(ngModel)]="project.enddate" required=""> 
+                                                </div>        
+                                    
+                                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-10 offset-2">
+                            <button type="submit" class="btn btn-primary float-right" [disabled]="!createProject1.valid || admincheck">Create Project</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

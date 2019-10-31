@@ -1,0 +1,170 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%;z-index: 1;"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<br><br><br>
+<body>
+   
+    <div class="tab-content" style="width: 82%; margin-left: 18%;z-index: 0;">
+        <div id="overall" class="container tab-pane active">
+            <div class="col-sm-10">
+    
+    
+                <div class="col offset-1">
+                    <br>
+                    <h1 class="text-md-left">Requirement Form</h1>
+                    <h3 class="text-md-left">Product Overall Description</h3>
+                </div>
+                <br><br>
+                <form class="form-group offset-2" autocomplete="off" novalidate #createProject1="ngForm">
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Product Perspective</legend>
+                            <div>
+                                <p>Select the appropriate type of the software system to be developed:</p>
+                                <select class="custom-select" [(ngModel)]="overalldetails.type" name="type" [disabled]="admincheck || status">
+                                        <option selected>Not Specified</option>
+                                        <option value="product is a follow-on member of a product family">product is a follow-on member of a product family</option>
+                                        <option value="product is a replacement for certain existing systems">product is a replacement for certain existing systems</option>
+                                        <option value="product is a new self-contained product">product is a new self-contained product</option>
+                                      </select></div>
+                            <br>
+                            <div class="row">
+    
+                                <div class="col">
+                                    <p class="text-left">Description: </p>
+                                    <div class="form-group shadow-textarea">
+                                        <textarea (keyup.enter)="onEnterDescription(overalldetails.description)" (focus)="onFocusDescription(overalldetails.description)" (keyup)="checkForMarks(overalldetails.description)" [disabled]="admincheck || status" class="form-control z-depth-1" [class.is-invalid]="pinputs.invalid && pinputs.touched" rows="10" name="description" [(ngModel)]="overalldetails.description" placeholder="Describe the context and origin of the product being specified in this SRS. If the SRS defines a component of a larger system, relate the requirements of the larger system to the functionality of this software and identify interfaces between the two."
+                                            #pinputs="ngModel"></textarea>
+                                    </div>
+                                    <span class="help-block " *ngIf="pinputs.invalid && pinputs.touched">
+                                    <p class="text-left" style="color:red;">This field is required.</p></span>
+                                </div>
+                            </div>
+                            <div>
+                                <p>Add a diagram that shows the major components of the overall system, subsystem interconnections, and external interfaces.</p>
+                                <div class="custom-file">
+                                    <input type="file" id="customFile" (change)="selectFile($event)">
+                                    <button class="btn btn-primary" [disabled]="!selectedFiles || admincheck || status" (click)="upload()">Save File</button>
+                                    <button class="btn btn-primary" style="margin-left: 10px" (click)="downloadMyFile()" *ngIf="available">View File</button>
+                                </div>
+                            </div>
+    
+                        </fieldset>
+                    </div>
+                    <br>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Product Functions</legend>
+                            <div class="row">
+    
+                                <div class="col">
+                                    <p class="text-left">Specifications:</p>
+                                    <div class="form-group shadow-textarea">
+                                        <textarea (keyup.enter)="onEnterSpecification(overalldetails.specification)" (focus)="onFocusSpecification(overalldetails.specification)" (keyup)="checkForMarks(overalldetails.specification)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="8" name="specification" [(ngModel)]="overalldetails.specification" #goals="ngModel" placeholder="Summarize the major functions the product must perform or must let the user perform. Organize the functions to make them understandable to any reader of the SRS."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br>
+                    <div class="col">
+                        <fieldset>
+                            <legend>User classes and Characteristics</legend>
+                            <div class="form-group shadow-textarea">
+                                <p class="text-left">User Classes:</p>
+    
+                                <textarea [disabled]="admincheck || status" class="form-control z-depth-1" rows="12" placeholder="Identify the various user classes that you anticipate will use this product. User classes may be differentiated based on frequency of use, subset of product functions used, technical expertise, security or privilege levels, educational level, or experience. Describe the pertinent characteristics of each user class. Certain requirements may pertain only to certain user classes. Distinguish the most important user classes for this product from those who are less important to satisfy"
+                                (keyup.enter)="onEnterUsercase(overalldetails.usercase)" (focus)="onFocusUsercase(overalldetails.usercase)" (keyup)="checkForMarks(overalldetails.usercase)" name="usercase" [(ngModel)]="overalldetails.usercase" #usecase="ngModel"></textarea>
+                            </div>
+                            <br>
+                        </fieldset>
+                    </div>
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Operating Environment</legend>
+                            <div class="form-group shadow-textarea">
+                                <p class="text-left">Software Platform:</p>
+    
+                                <textarea [disabled]="admincheck || status" class="form-control z-depth-1" rows="6" placeholder="Describe the environment in which the software will operate, operating system and versions, and any other software components or applications with which it must peacefully coexist" name="software"
+                                (keyup.enter)="onEnterSoftware(overalldetails.software)" (focus)="onFocusSoftware(overalldetails.software)" (keyup)="checkForMarks(overalldetails.software)" [(ngModel)]="overalldetails.software" #usecase="ngModel"></textarea>
+                            </div>
+                            <div class="form-group shadow-textarea">
+                                <p class="text-left">Hardware Platform:</p>
+    
+                                <textarea (keyup.enter)="onEnterHardware(overalldetails.hardware)" (focus)="onFocusHardware(overalldetails.hardware)" (keyup)="checkForMarks(overalldetails.hardware)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="6" placeholder="Describe the hardware platform which software will operate" name="hardware" [(ngModel)]="overalldetails.hardware" #usecase="ngModel"></textarea>
+                            </div>
+                            <br>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Design implementation Constraints</legend>
+                            <div class="form-group shadow-textarea">
+                                <p class="text-left">Design Constraints:</p>
+                                <textarea (keyup.enter)="onEnterConstraints(overalldetails.constraints)" (focus)="onFocusConstraints(overalldetails.constraints)" (keyup)="checkForMarks(overalldetails.constraints)" [disabled]="admincheck || status" class="form-control z-depth-1" rows="10" placeholder="Describe any items or issues that will limit the options available to the developers." name="constraints" [(ngModel)]="overalldetails.constraints" #usecase="ngModel"></textarea>
+                            </div>
+                            <br>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>User Documentation</legend>
+                            <div class="form-group shadow-textarea">
+                                <p class="text-left">Documents:</p>
+                                <textarea [disabled]="admincheck || status" class="form-control z-depth-1" rows="12" placeholder="List the user documentation components (such as user manuals, on-line help, and tutorials) that will be delivered along with the software. Identify any known user documentation delivery formats or standards."
+                                (keyup.enter)="onEnterDocuments(overalldetails.documents)" (focus)="onFocusDocuments(overalldetails.documents)" (keyup)="checkForMarks(overalldetails.documents)" name="documents" [(ngModel)]="overalldetails.documents" #usecase="ngModel"></textarea>
+                            </div>
+                            <br>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Assumptions and Dependencies</legend>
+                            <div class="form-group shadow-textarea">
+                                <textarea [disabled]="admincheck || status" class="form-control z-depth-1" rows="12" placeholder="List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints."
+                                (keyup.enter)="onEnterAssumptions(overalldetails.assumptions)" (focus)="onFocusAssumptions(overalldetails.assumptions)" (keyup)="checkForMarks(overalldetails.assumptions)" name="assumptions" [(ngModel)]="overalldetails.assumptions" #usecase="ngModel"></textarea>
+                            </div>
+                            <br>
+                        </fieldset>
+                    </div>
+    
+                    <div class="col">
+                        <fieldset>
+                            <legend>Comments</legend>
+    
+                            <div class="col">
+                                <p class="text-left">SBA Comments</p>
+                   
+                                <div class="form-group shadow-textarea">
+                                    <textarea [disabled]="admincheck || !sba" class="form-control z-depth-1" rows="8" name="sbacomment" [(ngModel)]="overalldetails.sbacomment" #goals="ngModel" placeholder="Mention SBA Comments (if any)"></textarea>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p class="text-left">PM Comments</p>
+                                <div class="form-group shadow-textarea">
+                                    <textarea [disabled]="admincheck || !pm" class="form-control z-depth-1" rows="8" name="pmcomment" [(ngModel)]="overalldetails.pmcomment" #poutputs="ngModel" placeholder="Mention PM Comments (if any)"></textarea>
+                                </div>
+                            </div>
+    
+                            <br>
+                        </fieldset>
+                    </div>
+    
+                    <div class="row">
+                            <div class="col-md-2"><button class="btn btn-primary" routerLink="../SRSOptions" style="width: 150px;">Back to Form List</button></div>
+                        <div class="col-md-8"> <button (click)="save()" class="btn btn-primary" style="width: 150px; margin-left: 280px" [disabled]="!createProject1.valid || admincheck">Save Progress</button></div>
+                        <div class="col-md-2">
+                            <!-- <button routerLink="/display" type="button" class="btn btn-primary"(click)="onProjectListClick()"" [disabled]="userform.invalid">Add Project</button> -->
+    
+                            <button class="btn btn-primary" (click)="submit()" style="width: 150px; margin-left: -55px" *ngIf="!status" [disabled]="admincheck">Submit</button>
+                        </div>
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>

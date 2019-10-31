@@ -1,0 +1,110 @@
+<app-navbar ng-model="navbar" style="position: fixed; width: 100%"> </app-navbar>
+<app-mainview ng-model="mainview"> </app-mainview>
+
+<section style="width: 82%; margin-left: 18%; background-color: cornflowerblue; position:fixed; margin-top: 55px">
+    <h3 style="margin-left: 40%; margin-top: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: wheat">Allocate Employees</h3>
+    <br>
+</section>
+<br><br><br><br><br>
+
+<div class="mt-4 col-8 offset-2">
+    <div class="card" style="margin-left: 13%; margin-top: 50px; width: 100%;">
+        <!-- <div class="card-header">Edit Customer Details</div> -->
+        <div class="card-body">
+            <form class="form-group" autocomplete="off" novalidate #createProject1="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Allocate Senior BA</label>
+                    <div class="col-sm-9">
+                            <select id="sba" name="lba" [(ngModel)]="newproject.lba" class="form-control" required [disabled]="admincheck"
+                            #banalyst1="ngModel">
+        
+                            <option *ngFor="let string of sbalist" [value]="string">
+                                {{string}}
+                            </option>
+                        </select>        
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-3 col-form-label">Allocate Junior BA's</label>
+                    <div class="col-sm-9">
+                            <select id="jba1" name="jba1" [(ngModel)]="newproject.jba1" class="form-control" required [disabled]="admincheck"
+                    #banalyst1="ngModel">
+
+                    <option *ngFor="let string of jbalist" [value]="string">
+                        {{string}}
+
+                    </option>
+                </select>
+
+                <select id="jba2" name="jba2" [(ngModel)]="newproject.jba2" class="form-control" required [disabled]="admincheck"
+                    #banalyst1="ngModel">
+                    <option *ngFor="let string of jbalist" [value]="string">
+                        {{string}}
+
+                    </option>
+                </select>
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label">Allocate Developers</label>
+                        <div class="col-sm-9">
+                                <select id="dev1" name="dev1" [(ngModel)]="newproject.dev1" class="form-control" required [disabled]="admincheck"
+                                #dev="ngModel">
+                                <option *ngFor="let string of devlist" [value]="string">
+                                    {{string}}
+                                </option>
+            
+                            </select>
+
+                            <select id="dev2" name="dev2" [(ngModel)]="newproject.dev2" class="form-control" [disabled]="admincheck"
+                    #dev="ngModel">
+                    <option *ngFor="let string of devlist" [value]="string">
+                        {{string}}
+                    </option>
+
+                </select>
+
+                <select id="dev3" name="dev3" [(ngModel)]="newproject.dev3" class="form-control" [disabled]="admincheck"
+                    #dev="ngModel">
+                    <option *ngFor="let string of devlist" [value]="string">
+                        {{string}}
+                    </option>
+
+                </select>
+
+                <select id="dev4" name="dev4" [(ngModel)]="newproject.dev4" class="form-control" [disabled]="admincheck"
+                    #dev="ngModel">
+                    <option *ngFor="let string of devlist" [value]="string">
+                        {{string}}
+                    </option>
+
+                </select>
+
+                <select id="dev5" name="dev5" [(ngModel)]="newproject.dev5" class="form-control"  [disabled]="admincheck"
+                    #dev="ngModel">
+                    <option *ngFor="let string of devlist" [value]="string">
+                        {{string}}
+                    </option>
+
+                </select>
+                        </div>
+                    </div>
+
+                    
+
+                <div class="form-group row">
+                    <div class="col-sm-10 offset-2">
+                            <button type="submit" class="btn btn-primary float-right" [disabled]="!createProject1.valid || admincheck">Create Project</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
